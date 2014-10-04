@@ -17,7 +17,7 @@ define(['capnp-js/builder/Allocator', 'capnp-js/builder/index', 'capnp-js/reader
         };
         Structure.SIGNALLER = Structure.prototype.SIGNALLER = 0;
         Structure.Group_signaller = (function(Parent) {
-            var Structure = builder.structure(Parent._READER.Group_signaller);
+            var Structure = builder.group(Parent._READER.Group_signaller);
             Structure.prototype.getInitialSessionId = function() {
                 var pointer = {
                     segment: this._segment,
@@ -69,18 +69,18 @@ define(['capnp-js/builder/Allocator', 'capnp-js/builder/index', 'capnp-js/reader
             if (!this.isSignaller()) {
                 throw new Error("Attempted to access an inactive union member");
             }
-            return new Structure.Group_signaller(this._arena, this._depth, this._layout());
+            return new Structure.Group_signaller(this);
         };
         Structure.prototype.initSignaller = function() {
             this._setWhich(0);
-            return new Structure.Group_signaller(this._arena, this._depth + 1, this._layout());
+            return new Structure.Group_signaller(this);
         };
         Structure.prototype.isService = function() {
             return this.which() === 1;
         };
         Structure.SERVICE = Structure.prototype.SERVICE = 1;
         Structure.Group_service = (function(Parent) {
-            var Structure = builder.structure(Parent._READER.Group_service);
+            var Structure = builder.group(Parent._READER.Group_service);
             Structure.prototype.getOffer = function() {
                 var position = this._dataSection + 2;
                 return reader.fields.bool(0, this._segment, position, 0);
@@ -96,18 +96,18 @@ define(['capnp-js/builder/Allocator', 'capnp-js/builder/index', 'capnp-js/reader
             if (!this.isService()) {
                 throw new Error("Attempted to access an inactive union member");
             }
-            return new Structure.Group_service(this._arena, this._depth, this._layout());
+            return new Structure.Group_service(this);
         };
         Structure.prototype.initService = function() {
             this._setWhich(1);
-            return new Structure.Group_service(this._arena, this._depth + 1, this._layout());
+            return new Structure.Group_service(this);
         };
         Structure.prototype.isPeer = function() {
             return this.which() === 2;
         };
         Structure.PEER = Structure.prototype.PEER = 2;
         Structure.Group_peer = (function(Parent) {
-            var Structure = builder.structure(Parent._READER.Group_peer);
+            var Structure = builder.group(Parent._READER.Group_peer);
             Structure.prototype.which = function() {
                 return reader.primitives.uint16(this._segment, this._dataSection + 2);
             };
@@ -121,7 +121,7 @@ define(['capnp-js/builder/Allocator', 'capnp-js/builder/index', 'capnp-js/reader
             };
             Structure.OFFER = Structure.prototype.OFFER = 0;
             Structure.Group_offer = (function(Parent) {
-                var Structure = builder.structure(Parent._READER.Group_offer);
+                var Structure = builder.group(Parent._READER.Group_offer);
                 Structure.prototype.getTarget = function() {
                     var position = this._dataSection + 4;
                     return reader.fields.int32(0, this._segment, position);
@@ -136,18 +136,18 @@ define(['capnp-js/builder/Allocator', 'capnp-js/builder/index', 'capnp-js/reader
                 if (!this.isOffer()) {
                     throw new Error("Attempted to access an inactive union member");
                 }
-                return new Structure.Group_offer(this._arena, this._depth, this._layout());
+                return new Structure.Group_offer(this);
             };
             Structure.prototype.initOffer = function() {
                 this._setWhich(0);
-                return new Structure.Group_offer(this._arena, this._depth + 1, this._layout());
+                return new Structure.Group_offer(this);
             };
             Structure.prototype.isAnswer = function() {
                 return this.which() === 1;
             };
             Structure.ANSWER = Structure.prototype.ANSWER = 1;
             Structure.Group_answer = (function(Parent) {
-                var Structure = builder.structure(Parent._READER.Group_answer);
+                var Structure = builder.group(Parent._READER.Group_answer);
                 Structure.prototype.getTarget = function() {
                     var position = this._dataSection + 4;
                     return reader.fields.int32(0, this._segment, position);
@@ -162,11 +162,11 @@ define(['capnp-js/builder/Allocator', 'capnp-js/builder/index', 'capnp-js/reader
                 if (!this.isAnswer()) {
                     throw new Error("Attempted to access an inactive union member");
                 }
-                return new Structure.Group_answer(this._arena, this._depth, this._layout());
+                return new Structure.Group_answer(this);
             };
             Structure.prototype.initAnswer = function() {
                 this._setWhich(1);
-                return new Structure.Group_answer(this._arena, this._depth + 1, this._layout());
+                return new Structure.Group_answer(this);
             };
             Structure.prototype._defaults = Structure._READER.prototype._defaults;
             return Structure;
@@ -175,11 +175,11 @@ define(['capnp-js/builder/Allocator', 'capnp-js/builder/index', 'capnp-js/reader
             if (!this.isPeer()) {
                 throw new Error("Attempted to access an inactive union member");
             }
-            return new Structure.Group_peer(this._arena, this._depth, this._layout());
+            return new Structure.Group_peer(this);
         };
         Structure.prototype.initPeer = function() {
             this._setWhich(2);
-            return new Structure.Group_peer(this._arena, this._depth + 1, this._layout());
+            return new Structure.Group_peer(this);
         };
         Structure.prototype._defaults = Structure._READER.prototype._defaults;
         return Structure;
