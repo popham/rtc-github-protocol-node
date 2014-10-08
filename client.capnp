@@ -1,25 +1,12 @@
 @0xcb410f8429d6fbc6;
 
-using import "user.capnp".Uid;
+using import "peer.capnp".Peer;
 
 struct Client {
     union {
-        signaller :group {
-            # Signaller communication
-            initialSessionId @0 :Data;
-        }
         service :group {
-            # Self state
-            offer @1 :Bool;
+            isOffering @0 :Bool;
         }
-        peer :union {
-            # Peer communication
-            offer :group {
-                target @2 :Uid;
-            }
-            answer :group {
-                target @3 :Uid;
-            }
-        }
+        peer @1 :Peer;
     }
 }
