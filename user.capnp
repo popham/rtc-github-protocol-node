@@ -3,6 +3,6 @@
 using Uid=Int32;
 
 struct User {
-  id @0 :Uid;
-  first @1 :Text;
+    id @0 :Uid;
+    name @1 :Text;
 }
