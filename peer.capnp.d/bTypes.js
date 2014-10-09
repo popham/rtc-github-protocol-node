@@ -1,5 +1,5 @@
-define(['capnp-js/builder/index', './rTypes'], function(builder, rTypes) {
+var builder = require('capnp-js/builder/index');
+var rTypes = require('./rTypes');
     var types = {};
     types['0xe5e90b52fd6c402e'] = builder.structure(rTypes['0xe5e90b52fd6c402e']);
-    return types;
-});
+    module.exports = types;

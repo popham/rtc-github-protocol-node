@@ -1,5 +1,6 @@
-define(['capnp-js/builder/Allocator', 'capnp-js/reader/index', './rScope'], function(Allocator, reader, scope) {
+var Allocator = require('capnp-js/builder/Allocator');
+var reader = require('capnp-js/reader/index');
+var scope = require('./rScope');
     var constants = {};
     var allocator = new Allocator();
-    return constants;
-});
+    module.exports = constants;

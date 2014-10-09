@@ -1,4 +1,7 @@
-define(['capnp-js/builder/Allocator', 'capnp-js/reader/index', './rScope', './constants'], function(Allocator, reader, scope, constants) {
+var Allocator = require('capnp-js/builder/Allocator');
+var reader = require('capnp-js/reader/index');
+var scope = require('./rScope');
+var constants = require('./constants');
     var readers = {};
     var allocator = new Allocator();
     readers.Server = (function() {
@@ -138,5 +141,4 @@ define(['capnp-js/builder/Allocator', 'capnp-js/reader/index', './rScope', './co
         };
         return Structure;
     })();
-    return readers;
-});
+    module.exports = readers;

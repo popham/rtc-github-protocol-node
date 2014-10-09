@@ -1,4 +1,8 @@
-define(['capnp-js/builder/Allocator', 'capnp-js/builder/index', 'capnp-js/reader/index', './bScope', './readers'], function(Allocator, builder, reader, scope, readers) { /** Loading `readers` guarantees that reader prototypes have been populated.* Imagine using a builder, `b`:  If the underlying data is shared read-only* by `b.asReader()`, then the prototype of this reader would not have been* initialized unless some external code imported `readers`.*/
+var Allocator = require('capnp-js/builder/Allocator');
+var builder = require('capnp-js/builder/index');
+var reader = require('capnp-js/reader/index');
+var scope = require('./bScope');
+var readers = require('./readers'); /** Loading `readers` guarantees that reader prototypes have been populated.* Imagine using a builder, `b`:  If the underlying data is shared read-only* by `b.asReader()`, then the prototype of this reader would not have been* initialized unless some external code imported `readers`.*/
     var builders = {};
     var allocator = new Allocator();
     builders.Client = (function() {
@@ -109,5 +113,4 @@ define(['capnp-js/builder/Allocator', 'capnp-js/builder/index', 'capnp-js/reader
         Structure.prototype._defaults = Structure._READER.prototype._defaults;
         return Structure;
     })();
-    return builders;
-});
+    module.exports = builders;

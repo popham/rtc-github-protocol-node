@@ -1,4 +1,6 @@
-define(['./bTypes', '../client.capnp.d/bTypes', '../user.capnp.d/bTypes'], function(types, file0, file1) {
+var types = require('./bTypes');
+var file0 = require('../client.capnp.d/bTypes');
+var file1 = require('../user.capnp.d/bTypes');
     var scope = {};
     var id;
     for (id in file0) {
@@ -10,5 +12,4 @@ define(['./bTypes', '../client.capnp.d/bTypes', '../user.capnp.d/bTypes'], funct
     for (id in types) {
         scope[id] = types[id];
     }
-    return scope;
-});
+    module.exports = scope;

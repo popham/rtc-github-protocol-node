@@ -1,8 +1,7 @@
-define(['./bTypes'], function(types) {
+var types = require('./bTypes');
     var scope = {};
     var id;
     for (id in types) {
         scope[id] = types[id];
     }
-    return scope;
-});
+    module.exports = scope;

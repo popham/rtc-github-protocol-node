@@ -1,4 +1,5 @@
-define(['./rTypes', '../peer.capnp.d/rTypes'], function(types, file0) {
+var types = require('./rTypes');
+var file0 = require('../peer.capnp.d/rTypes');
     var scope = {};
     var id;
     for (id in file0) {
@@ -7,5 +8,4 @@ define(['./rTypes', '../peer.capnp.d/rTypes'], function(types, file0) {
     for (id in types) {
         scope[id] = types[id];
     }
-    return scope;
-});
+    module.exports = scope;
