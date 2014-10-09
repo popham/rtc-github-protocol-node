@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "capnp": "capnpc -ojs *.capnp"
+    "capnp": "capnpc -ojs *.capnp",
+    "build": "npm run capnp && nodefy --output=node *.capnp & cp -r *.capnp.d amd & wait"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/popham/rtc-github-protocol",
   "devDependencies": {
-    "capnp-js-plugin": "0.0.7"
+    "capnp-js-plugin": "0.0.7",
+    "nodefy": "^0.2.2"
   }
 }
